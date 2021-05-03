@@ -1,0 +1,1 @@
+Search.setIndex({envversion:47,filenames:["examples","examples/sample1","index","intro"],objects:{},objnames:{},objtypes:{},terms:{block:1,code:1,content:2,def:1,function_nam:1,know:2,librari:0,limit:2,print:1,sampl:1,thi:1,your:2},titles:["Examples","Example of using the library","&lt;no title&gt;","Know Your Limit"],titleterms:{exampl:[0,1],know:3,librari:1,limit:3,your:3}})
