@@ -2,7 +2,8 @@
 Know Your Limit
 ###############
 
-Know your limits is a library for ....
+Know your limits is a library for estimating the effect of noise on quantum algorithms supposed to
+solve optimization problems.
 
 ..  image:: ./images/know_limits_vs_google.png
     :align: center
