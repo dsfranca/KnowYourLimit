@@ -39,3 +39,5 @@ beta1=1
 print(betas)
 print(parts)
 print(n*np.log(np.exp(betas)+np.exp(-betas)))
+
+[betas,parts]=partition_function_estimator_Ising(beta0,beta1,A,'MC',bs,step_size=0.1)

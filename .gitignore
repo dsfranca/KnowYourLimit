@@ -1,1 +1,5 @@
 venv/*
+.venv-windows/*
+docs/test-windows/*
+.vscode/*
+__pycache__/*

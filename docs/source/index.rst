@@ -9,4 +9,5 @@ KnowYourLimits
     intro
     install
     main_modules
+    aux_modules
     examples
