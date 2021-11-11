@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 31 18:18:21 2021
 
-@author: danielstilckfranca
-"""
 import numpy as np
 import warnings
 import cirq
@@ -13,9 +7,16 @@ from numpy import linalg as LA
 from scipy import linalg
 
 
+"""
+The module containing the class we use to represent quantum channels.
+"""
+
 class quantum_channel:
+    """
+    The class for quantum channels. The quantum channel is initialized by a cirq noise model. The quantum channel is initialized by a Cirq noise model. We then compute the spectral gap and fixed point of the noise model.
+    """
     def __init__(self, cirq_model):
-        
+
         kraus_array=cirq_model
         #converts representation from ndarray to matrix, easier for complex conjugate
         self.kraus=[]
@@ -65,6 +66,17 @@ class quantum_channel:
         self.contraction=self.spectral_gap**2
     #applies the channel to a matrix X    
     def apply_channel(self,X):
+        """
+        Applies the quantum channel to a matrix.
+
+        Returns:
+            output (complex array): the output of the channel given an input matrix.
+
+        Args:
+    
+            X(complex array): input of the channel.
+
+        """
         output=np.zeros([2**self.locality,2**self.locality],np.complex128)
         for kraus_matrix in self.kraus:
 
@@ -76,6 +88,17 @@ class quantum_channel:
     
     #finds the overlap tr(A^*T(B)) for the channel T
     def overlap(self,A,B):
+        """
+        Denoting the underlying chanel by :math:`T` and given matrices :math:`A,B`, this function computes :math:`\\operatorname{tr}(A^{\\dagger}T(B))`.
+
+        Returns:
+            output (complex array): the output of the channel given an input matrix.
+
+        Args:
+    
+            X(complex array): input of the channel.
+
+        """
         new=self.apply_channel(B)
         new=(A.getH()).dot(new)
         return np.trace(new)

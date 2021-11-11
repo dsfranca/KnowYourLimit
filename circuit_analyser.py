@@ -1,19 +1,28 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Mar 31 22:34:45 2021
 
-@author: danielstilckfranca
-"""
 import numpy as np
 import warnings
 
 from numpy import linalg as LA
 from scipy import linalg
 import cirq
-#computes the relative entropy between fixed point of noise and output given the fixed point, contraction rate
-#and cirq circuit. Will assume that the circuit is initiated at 0. 
+"""
+The module containing functions to estimate the relative entropy.
+""" 
+
 def entropy_output(circuit,number_qubits,fixed_point,contraction):
+    """
+    Estimates the relative entropy between the output of a noisy circuit and the fixed point of the noise. The code assumes that the initial state of the circuit is :math:`\\ket{0}^{\\otimes n}`. Note that all arguments related to the noise are automatically provided by the quantum channel class.
+
+    Returns:
+        final_ent (float): upper bound on the relative entropy between output of the circuit and fixed point of the noise.
+
+    Args:
+    
+        circuit(Cirq circuit): cirq noiseless circuit whose output's energy we wish to lower-bound.
+        number_qubits (integer): the number of qubits of the circuit.
+        fixed_point (2x2 complex array): density matrix corresponding to the fixed point of the noise.
+        contraction (float): contraction of the noise towards the fixed point. 
+    """
     #initial relative entropy, given by n*tr(|0><0|log(fixed_point))
     initial=-number_qubits*linalg.logm(fixed_point)[0,0]
     #print(initial)
@@ -48,8 +57,8 @@ def entropy_output(circuit,number_qubits,fixed_point,contraction):
         total_contrib_moments+=contraction**(number_moments-k)*contrib_moments[k]
                 
             
-        
-    return initial*(contraction**(number_moments))+total_contrib_moments
+    final_ent=initial*(contraction**(number_moments))+total_contrib_moments
+    return final_ent
 
 
 

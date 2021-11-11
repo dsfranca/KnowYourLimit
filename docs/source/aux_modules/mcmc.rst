@@ -27,5 +27,6 @@ For the sampling we use the Metropolis/Glauber dynamics algorithm. And for the a
 Also note that the Markov chain method is only (provably) efficient for :math:`\beta_{k}=\mathcal{O}(\|A\|^{-1})`. For that range, a number of Metropolis steps of order :math:`\mathcal{O}(n\log(n))` should suffice to obtain a sample that is close to the Gibbs state. See e.g. the book `Markov Chains and Mixing Times <https://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf>`_ for a thorough discussion of all the topics discussed above.
 
 
+
 .. automodule:: mcmc
     :members:
