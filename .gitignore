@@ -3,3 +3,5 @@ venv/*
 docs/test-windows/*
 .vscode/*
 __pycache__/*
+.venv/*
+test/*
