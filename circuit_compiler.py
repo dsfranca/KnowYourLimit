@@ -1,7 +1,6 @@
 
 
 import cirq
-import recirq
 import networkx as nx
 from cirq.contrib.svg import SVGCircuit
 import numpy as np
@@ -62,6 +61,20 @@ def tk_to_cirq_qubit(tk):
     return cirq.LineQubit(ind[0]) if len(ind) == 1 else cirq.GridQubit(*ind)
     
 def compiled_routed_qaoa(problem_graph,gammas,betas,tk_device):
+    """
+    Returns a compiled and routed QAOA circuit given the target problem, the parameters of the QAOA circuit and a tket device which models the connectivity graph of the quantum device.
+
+    Returns:
+        routed_circuit (cirq circuit): returns the (noiseless) routed circuit.
+
+
+    Args:
+    
+        problem_graph(networkx graph): the (weighted) graph describing the target problem.
+        gammas (vector of floats): the parameters of the unitary corresponding to the target Hamiltonian.
+        betas (vector of floats): the parameters of the unitary corresponding to the mixer Hamiltonian.
+        tk_device (tket device): the connectivity graph of the quantum device we wish to route the circuit to.
+    """
     k=problem_graph.order()
     #have to adjust later
     nx.set_edge_attributes(problem_graph, values=1, name='weight')

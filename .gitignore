@@ -1,7 +1,11 @@
 venv/*
+venv/
+.venv/bin/*
 .venv-windows/*
 docs/test-windows/*
 .vscode/*
 __pycache__/*
 .venv/*
 test/*
+.venv/
+.venv/*
