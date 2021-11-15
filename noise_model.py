@@ -17,7 +17,7 @@ class quantum_channel:
     """
     def __init__(self, cirq_model):
 
-        kraus_array=cirq_model
+        kraus_array=cirq.kraus(cirq_model)
         #converts representation from ndarray to matrix, easier for complex conjugate
         self.kraus=[]
         for kraus in kraus_array:

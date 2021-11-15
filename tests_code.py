@@ -2,6 +2,9 @@
 import warnings
 import numpy as np
 import quimb.tensor as qtn
+import pytket
+import cirq
+from simplified_estimator import *
 #from quimb.tensor.tensor_arbgeom import TensorNetworkGen, TensorNetworkGenVector
 
 from quimb.utils import concat
@@ -34,10 +37,21 @@ A=0.0001*nx.to_scipy_sparse_matrix(G)
 bs=np.ones(n)
 beta0=0
 beta1=1
-[betas,parts]=partition_function_estimator_Ising(beta0,beta1,A,'TN',bs,step_size=0.1)
+#[betas,parts]=partition_function_estimator_Ising(beta0,beta1,A,'TN',bs,step_size=0.1)
 
-print(betas)
-print(parts)
-print(n*np.log(np.exp(betas)+np.exp(-betas)))
+#print(betas)
+#print(parts)
+#print(n*np.log(np.exp(betas)+np.exp(-betas)))
 
-[betas,parts]=partition_function_estimator_Ising(beta0,beta1,A,'MC',bs,step_size=0.1)
+#[betas,parts]=partition_function_estimator_Ising(beta0,beta1,A,'MC',bs,step_size=0.1)
+
+A=nx.to_scipy_sparse_matrix(G)
+device=pytket.routing.SquareGrid(4,4)
+depo = cirq.depolarize(
+    p=0.01
+)
+gammas=np.ones(3)
+betas=gammas
+#print(estimator_energy_QAOA(depo,A,device,gammas,betas,verbose=1,method='TN'))
+#print(estimator_energy_QAOA_dep_square(0.01,A,3))
+print(estimator_energy_QAOA_dep_square_d_regular(0.01,16,4,3))
