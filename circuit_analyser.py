@@ -11,7 +11,7 @@ The module containing functions to estimate the relative entropy.
 
 def entropy_output(circuit,number_qubits,fixed_point,contraction):
     """
-    Estimates the relative entropy between the output of a noisy circuit and the fixed point of the noise. The code assumes that the initial state of the circuit is :math:`\\ket{0}^{\\otimes n}`. Note that all arguments related to the noise are automatically provided by the quantum channel class.
+    Estimates the relative entropy between the output of a noisy circuit and the fixed point of the noise. The code assumes that the initial state of the circuit is :math:`|0\\rangle^{\\otimes n}`. Note that all arguments related to the noise are automatically provided by the quantum channel class.
 
     Returns:
         final_ent (float): upper bound on the relative entropy between output of the circuit and fixed point of the noise.

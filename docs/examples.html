@@ -1,74 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Examples &mdash; Know Your Limit  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Examples &mdash; Know Your Limits  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example of using the library" href="examples/sample1.html" />
-    <link rel="prev" title="Know Your Limit" href="intro.html" /> 
+    <link rel="prev" title="Markov chain methods" href="aux_modules/mcmc.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
-            <a href="index.html" class="icon icon-home"> Know Your Limit
-          
-
-          
+            <a href="index.html" class="icon icon-home"> Know Your Limits
           </a>
-
-          
-            
-            
               <div class="version">
                 0.0.1
               </div>
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -76,147 +36,314 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Know Your Limit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Know Your Limits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-knowyourlimits">What is KnowYourLimits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-does-knowyourlimits-do">What does KnowYourLimits do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#how-does-knowyourlimits-obtain-the-lower-bound">How does KnowYourLimits obtain the lower bound?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#markov-chain-monte-carlo">Markov Chain Monte Carlo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#tensor-networks">Tensor Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#modeling-the-noise">Modeling the noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installing KnowYourLimits</a></li>
+<li class="toctree-l1"><a class="reference internal" href="main_modules.html">Main Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="main_modules.html#partition-function-estimators">Partition function estimators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/partfunc.html">Partition function estimators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main_modules.html#compile-and-route">Compile and route</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/comproute.html">Compilation and routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main_modules.html#noise-and-entropic-convergence">Noise and entropic convergence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/entnoise.html">Noise and entropic convergence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="modules/entnoise.html#quantum-channels">Quantum channels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/entnoise.html#entropic-convergence-for-circuits">Entropic convergence for circuits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modules/entnoise.html#entropic-convergence-for-annealers">Entropic convergence for annealers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="main_modules.html#simple-estimates">Simple estimates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modules/simple_est.html">Simple estimate generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="aux_modules.html">Auxiliary modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="aux_modules.html#markov-chains">Markov chains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="aux_modules/mcmc.html">Markov chain methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="examples/sample1.html">Example of using the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-benchmarking-qaoa">Example: Benchmarking QAOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-analysing-the-effect-of-limited-connectivity">Example: Analysing the effect of limited connectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-comparison-to-experiments">Example: Comparison to experiments</a></li>
 </ul>
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Know Your Limit</a>
-        
+          <a href="index.html">Know Your Limits</a>
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Examples</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/sample1.html">Example of using the library</a></li>
-</ul>
+<div class="section" id="example-benchmarking-qaoa">
+<h2>Example: Benchmarking QAOA<a class="headerlink" href="#example-benchmarking-qaoa" title="Permalink to this headline">¶</a></h2>
+<p>We will now show how KnowYourLimits can be used to benchmark the performance of QAOA under noise.
+We will compare the predicted lower bound on the energy of a QAOA circuit with runs of the actual circuit. We will also compare the performance of noisy QAOA with the standard semidefinite relaxation of the problem.
+To simulate the noisy circuit, we will resort to Cirq.</p>
+<p>Let us start by importing the relevant parts of the package:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">annealer_analyser</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">simplified_estimator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">cirq</span>
+<span class="kn">import</span> <span class="nn">qsimcirq</span>
+<span class="kn">from</span> <span class="nn">estimator</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>We will try to find the ground state of a random Ising model on <span class="math notranslate nohighlight">\(d\)</span>-regular graph with <span class="math notranslate nohighlight">\(n\)</span> spins. We will define it below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">22</span>
+<span class="n">problem_graph</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">random_regular_graph</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">2021</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will now write the code to compile and simulate the noisy QAOA circuit.
+We will simulate a noisy QAOA circuit on a square grid.
+The parameters of the QAOA circuit will be set like those suggested by the paper <a class="reference external" href="https://arxiv.org/pdf/2110.14206.pdf">The Quantum Approximate Optimization Algorithm at High Depth
+for MaxCut on Large-Girth Regular Graphs
+and the Sherrington-Kirkpatrick Model</a>.
+There, the authors determine the optimal QAOA parameters for random regular graphs.
+Their results only hold in the limit of <span class="math notranslate nohighlight">\(n,d\to +\infty\)</span>, which is far from the regime considered in this simulation.
+However, we will use these values as a reasonable ansatz and in order to avoid the optimization step of QAOA.
+Let us start with compiling the noiseless circuit.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">device</span><span class="o">=</span><span class="n">pytket</span><span class="o">.</span><span class="n">routing</span><span class="o">.</span><span class="n">SquareGrid</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">depth</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">gammas</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3297</span><span class="p">,</span> <span class="mf">0.5688</span><span class="p">,</span> <span class="mf">0.6406</span><span class="p">]</span>
+<span class="n">betas</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5500</span><span class="p">,</span> <span class="mf">0.3675</span><span class="p">,</span> <span class="mf">0.2109</span><span class="p">]</span>
+<span class="n">circuit</span><span class="o">=</span><span class="n">compiled_routed_weighted_qaoa</span><span class="p">(</span><span class="n">problem_graph</span><span class="p">,</span><span class="n">gammas</span><span class="p">,</span><span class="n">betas</span><span class="p">,</span><span class="n">device</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We will now define a function that adds layers of local depolarizing noise with depolarizing probability <span class="math notranslate nohighlight">\(p\)</span> to the clean circuit.
+It outputs the generating the noisy circuit.
+After that, we will also generate the noisy circuit with depolarizing probability <span class="math notranslate nohighlight">\(p=0.1\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clean_to_noisy</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">c_noisy</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">qubits</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">all_qubits</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">moment</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">moments</span><span class="p">:</span>
+        <span class="n">c_noisy</span><span class="o">+=</span><span class="n">moment</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)):</span>
+            <span class="n">c_noisy</span><span class="o">+=</span><span class="n">cirq</span><span class="o">.</span><span class="n">depolarize</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">qubits</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">qubits</span><span class="p">)):</span>
+        <span class="n">c_noisy</span><span class="o">+=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">qubits</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">c_noisy</span>
+<span class="n">c_noisy</span><span class="o">=</span><span class="n">clean_to_noisy</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We are now ready to simulate the noisy circuit using Cirq.
+We will generate 100 shots and then output the average and the minimum observed energy.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qsim_simulator</span> <span class="o">=</span> <span class="n">qsimcirq</span><span class="o">.</span><span class="n">QSimSimulator</span><span class="p">()</span>
+<span class="n">measure_results</span> <span class="o">=</span> <span class="n">qsim_simulator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">c_noisy</span><span class="p">,</span> <span class="n">repetitions</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">results</span><span class="o">=</span><span class="n">measure_results</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">energies</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">A</span><span class="o">=</span><span class="n">nx</span><span class="o">.</span><span class="n">to_scipy_sparse_matrix</span><span class="p">(</span><span class="n">problem_graph</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">state_final</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="n">k</span><span class="p">,:])</span>
+
+    <span class="n">x</span><span class="o">=</span><span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">state_final</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">state_final</span><span class="p">)</span>
+    <span class="n">energies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average energy&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">energies</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimum energy&quot;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">energies</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>We expect that shallow, noisy quantum circuits satisfy Gaussian concentration.
+Explaining the concept of Gaussian concentration and why noisy quantum circuits should satisfy it goes way beyond the scope of this example.
+But it predicts that the energy of the output strings <span class="math notranslate nohighlight">\(E\)</span> should be approximately contained in the interval <span class="math notranslate nohighlight">\([\mathbb{E}(E)- d\sqrt{n},\mathbb{E}(X)+ d\sqrt{n}\)</span>.
+With the choice of <span class="math notranslate nohighlight">\(n,d\)</span> above, this would lead to the prediction that the lowest energy string we will observe should have approximately energy <span class="math notranslate nohighlight">\(\mathbb{E}(X)- 14\)</span>, give or take a bit.</p>
+<p>Let us now compare this with what KnowYourLimits predicts:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span><span class="o">=</span><span class="n">estimator_energy_QAOA_dep_square</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;TN&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KnowYourLimits average:&quot;</span><span class="p">,</span><span class="n">prediction</span><span class="p">,</span><span class="s2">&quot;Lowest energy observed should be roughly:&quot;</span><span class="p">,</span><span class="n">prediction</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This predicts that the value outputted by noisy QAOA should not be significantly away from -14.
+We can also compare this to what the standard SDP relaxation outputs.
+This corresponds to a standard convex relaxation of the problem that can be computed in polynomial time.
+We will also run the SDP with 100 shots to make a fair comparison.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sdp_energy</span><span class="o">=</span><span class="n">SDP_average</span><span class="p">(</span><span class="n">problem_graph</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected energy of SDP: &quot;</span><span class="p">,</span><span class="n">sdp_energy</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="s2">&quot;Minimum energy&quot;</span><span class="p">,</span><span class="n">sdp_energy</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>This outputs a minimal energy of roughly -25.
+Thus, we see that KnowYourLimits was able to correctly predict that this noisy QAOA circuit would be significantly outperformed by this efficient classical algorithm!</p>
+<p>It should be difficult to simulate quantum circuits that are significantly larger than the one in this example with Cirq and a laptop.</p>
+<p>However, the estimation methods of KnowYourLimits can still provide useful advice for significantly larger system sizes!</p>
+</div>
+<div class="section" id="example-analysing-the-effect-of-limited-connectivity">
+<h2>Example: Analysing the effect of limited connectivity<a class="headerlink" href="#example-analysing-the-effect-of-limited-connectivity" title="Permalink to this headline">¶</a></h2>
+<p>In this example we will show how KnowYourLimits can be used to study the impact that the limited connectivity of near-term devices has.
+Indeed, as the topology of the device does not necessarily match that of the circuit we wish to implement, a constant depth circuit could require a significantly larger depth to be implemented on a device with, say, 2D connectivity.</p>
+<p>To that end, we will resort to the <code class="xref py py-func docutils literal notranslate"><span class="pre">estimator_energy_QAOA_dep_square_d_regular()</span></code> to perform this estimate.
+This function compiles a random QAOA circuit to solve MAXCUT on a d-regular graph in a 2D square architecture.</p>
+<p>We can then easily write some code that allows us to analyse how the energy density of the output scales as we increase the system size.
+We will set the local depolarzing rate to <span class="math notranslate nohighlight">\(p=0.001\)</span> and generate 10 samples per system size.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simplified_estimator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">samples</span><span class="o">=</span><span class="mi">10</span>
+
+<span class="n">p</span><span class="o">=</span><span class="mf">0.001</span>
+<span class="n">initial</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">final</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">final_results</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">final</span><span class="o">-</span><span class="n">initial</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">final</span><span class="o">-</span><span class="n">initial</span><span class="p">):</span>
+    <span class="n">energies</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">sample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">samples</span><span class="p">):</span>
+        <span class="n">energies</span><span class="p">[</span><span class="n">sample</span><span class="p">]</span><span class="o">=</span><span class="n">estimator_energy_QAOA_dep_square_d_regular</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">initial</span><span class="o">+</span><span class="n">k</span><span class="p">,</span><span class="n">d</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;TN&#39;</span><span class="p">)</span>
+    <span class="n">final_results</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">energies</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">initial</span><span class="o">+</span><span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">initial</span><span class="p">,</span><span class="n">final</span><span class="p">,</span><span class="n">final</span><span class="o">-</span><span class="n">initial</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">initial</span><span class="p">,</span><span class="n">final</span><span class="p">),</span><span class="n">final_results</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;$p=0.01$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;System size&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Energy density of output&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Scaling of energy density&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;scaling_energy.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the plot below we can see the scaling of the energy density as we increase the system size:</p>
+<a class="reference internal image-reference" href="_images/scaling_energy.png"><img alt="Scaling of energy desnsity" class="align-center" src="_images/scaling_energy.png" style="width: 500px;" /></a>
+</div>
+<div class="section" id="example-comparison-to-experiments">
+<h2>Example: Comparison to experiments<a class="headerlink" href="#example-comparison-to-experiments" title="Permalink to this headline">¶</a></h2>
+<p>We can also compare the results of KnowYourLimits to actual experiments!
+The QAOA algorithm was recently implemented on Google’s Sycamore device.
+The results were reported in the paper <a class="reference external" href="https://www.nature.com/articles/s41567-020-01105-y">Quantum approximate optimization of non-planar graph problems on a planar superconducting processor</a>.
+We will now show how KnowYourLimits could have predicted with little effort that the Sycamore would fail to output low-energy strings.</p>
+<p>This example will also show how 1-qubit depolarizing noise is a good approximation to the noise affecting the device.
+This is meant in the sense that this noise model provides us with lower bounds on the energy that are consistent with what is observed in experiments.</p>
+<p>We will analyze the performance of the device for solving the SK-model. This is a model with all-to-all connectivity. This means that tensor network methods to compute the partition function will not perform well. However, the system sizes considered in Google’s experiment can easily be analysed by computing the partition function brute force.</p>
+<p>To match the experiments, we will compile the circuits to the architecture of Google’s Sycamore device.</p>
+<p>Let us now show how to perform this analysis and make predictions for the experiment.
+We start by importing the relevant packages and KnowYourLimits functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cirq_google</span> <span class="k">as</span> <span class="nn">cg</span>
+<span class="kn">import</span> <span class="nn">cirq.contrib.routing</span> <span class="k">as</span> <span class="nn">ccr</span>
+<span class="kn">import</span> <span class="nn">cirq</span> <span class="k">as</span> <span class="nn">cirq</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">simplified_estimator</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>We will now import the connectivity graph of the Sycamore 23 device and conver it to a tket device. We will need to perform this conversion because we use tket to route and compile the circuit to the device.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">device_google</span> <span class="o">=</span> <span class="n">cg</span><span class="o">.</span><span class="n">Sycamore23</span><span class="o">.</span><span class="n">qubits</span>
+
+<span class="n">dev_graph</span> <span class="o">=</span> <span class="n">ccr</span><span class="o">.</span><span class="n">gridqubits_to_graph_device</span><span class="p">(</span><span class="n">cg</span><span class="o">.</span><span class="n">Sycamore23</span><span class="o">.</span><span class="n">qubits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dev_graph</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_qubit_index_edges</span><span class="p">():</span>
+    <span class="n">dev_graph</span> <span class="o">=</span> <span class="n">cirq</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">routing</span><span class="o">.</span><span class="n">gridqubits_to_graph_device</span><span class="p">(</span><span class="n">device_google</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span> <span class="ow">in</span> <span class="n">dev_graph</span><span class="o">.</span><span class="n">edges</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> <span class="n">n1</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">n1</span><span class="o">.</span><span class="n">col</span><span class="p">),</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;grid&#39;</span><span class="p">,</span> <span class="n">n2</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="n">n2</span><span class="o">.</span><span class="n">col</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_device_to_tket_device</span><span class="p">():</span>
+    <span class="n">arc</span> <span class="o">=</span> <span class="n">pytket</span><span class="o">.</span><span class="n">routing</span><span class="o">.</span><span class="n">Architecture</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="n">_qubit_index_edges</span><span class="p">())</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">arc</span>
+
+<span class="n">device_google</span><span class="o">=</span><span class="n">_device_to_tket_device</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We will now run the code that performs the instances. As the SK-model is a class of randomized instances, we will sample a few and see the median performance of noisy quantum circuits. In this experiment, we will sample 20 instances for each system size.
+As the Google experiment was run on system sizes ranging from 9 to 17, we will also consider these system sizes</p>
+<p>As the original Google paper plots the ratio of the energy achieved by noisy quantum device and the ground state energy, we will also compute this quantity.
+This is done by the function <code class="xref py py-func docutils literal notranslate"><span class="pre">estimator_energy_QAOA_dep_device_SK()</span></code> from KnowYourLimits.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">ratios</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">18</span><span class="p">):</span>
+    <span class="n">results</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span>  <span class="n">sample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">samples</span><span class="p">):</span>
+        <span class="n">result</span><span class="o">=</span><span class="n">estimator_energy_QAOA_dep_device_SK</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.006</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">device</span><span class="o">=</span><span class="n">device_google</span><span class="p">,</span><span class="n">depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ratios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Now we are ready to plot the results of the KnowYourLimits estimate when compared with the data from the actual experiment. The data below is inferred from Fig. 4 of the paper.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">results_experiment</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.17</span><span class="p">,</span><span class="mf">0.17</span><span class="p">,</span><span class="mf">0.16</span><span class="p">,</span><span class="mf">0.13</span><span class="p">,</span><span class="mf">0.09</span><span class="p">,</span><span class="mf">0.03</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">ratios</span><span class="p">)),</span><span class="n">ratios</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;KnowYourLimits&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">ratios</span><span class="p">)),</span><span class="n">results_experiment</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Sycamore data&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Know your limits projections vs. experimental results&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of qubits&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ratio expectation value of output and true minimum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;know_limits_vs_google2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The output of one run of the code is shown below:</p>
+<a class="reference internal image-reference" href="_images/know_limits_vs_google2.png"><img alt="Scaling of energy desnsity" class="align-center" src="_images/know_limits_vs_google2.png" style="width: 500px;" /></a>
+<p>We see that, as expected, KnowYourLimits provides us with an upper-bound on the actual value of the energy outputted by the device.</p>
 </div>
 </div>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="examples/sample1.html" class="btn btn-neutral float-right" title="Example of using the library" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="intro.html" class="btn btn-neutral float-left" title="Know Your Limit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="aux_modules/mcmc.html" class="btn btn-neutral float-left" title="Markov chain methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, Daniel Stilck França.
-
-    </p>
+    <p>&#169; Copyright 2021, Daniel Stilck França.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compilation and routing &mdash; Know Your Limits  documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Noise and entropic convergence" href="entnoise.html" />
+    <link rel="prev" title="Partition function estimators" href="partfunc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Know Your Limits
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Know Your Limits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-knowyourlimits">What is KnowYourLimits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-does-knowyourlimits-do">What does KnowYourLimits do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#how-does-knowyourlimits-obtain-the-lower-bound">How does KnowYourLimits obtain the lower bound?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#markov-chain-monte-carlo">Markov Chain Monte Carlo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#tensor-networks">Tensor Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#modeling-the-noise">Modeling the noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing KnowYourLimits</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main_modules.html">Main Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#partition-function-estimators">Partition function estimators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="partfunc.html">Partition function estimators</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../main_modules.html#compile-and-route">Compile and route</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Compilation and routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#noise-and-entropic-convergence">Noise and entropic convergence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="entnoise.html">Noise and entropic convergence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#quantum-channels">Quantum channels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#entropic-convergence-for-circuits">Entropic convergence for circuits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#entropic-convergence-for-annealers">Entropic convergence for annealers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#simple-estimates">Simple estimates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simple_est.html">Simple estimate generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aux_modules.html">Auxiliary modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../aux_modules.html#markov-chains">Markov chains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aux_modules/mcmc.html">Markov chain methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-benchmarking-qaoa">Example: Benchmarking QAOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-analysing-the-effect-of-limited-connectivity">Example: Analysing the effect of limited connectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-comparison-to-experiments">Example: Comparison to experiments</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Know Your Limits</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../main_modules.html">Main Modules</a> &raquo;</li>
+      <li>Compilation and routing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/comproute.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="compilation-and-routing">
+<h1>Compilation and routing<a class="headerlink" href="#compilation-and-routing" title="Permalink to this headline">¶</a></h1>
+<p>Whenever implementing a quantum circuit on an given quantum device, there are two limitations of any real device that have to be taken into account:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The device cannot implement arbitrary 1-qubit and 2-qubit gates. Thus, the gates in the circuit have to be compiled into a circuit that only containts native gates.</p></li>
+<li><p>The device has a limited connectivity. That is, we cannot implement gates between arbitrary 2-qubits, but only those specified by some connectivity graph.</p></li>
+</ol>
+</div></blockquote>
+<p>Both of these points increase the physical depth of a circuit when implementing it on near-term devices. Although both of these points only incur in a polynomial increase of the depth of the circuit and, thus, is not a major issue for fault-tolerant quantum computation, they can make a significant difference in the absence of error correction.</p>
+<p>The functions in this module allow for both compling a given circuit into a native gate set and to perform the routing of the qubits in efficient ways. To perform the compilation we will resort to <a class="reference external" href="https://quantumai.google/cirq/circuits">Cirq</a> and to perform the routing we will resort to <a class="reference external" href="https://cambridgequantum.com/tket/">TKET</a> (see also <a class="reference external" href="https://quantumai.google/cirq/experiments/qaoa/routing_with_tket">this tutorial</a> for a discussion on how to use tket with cirq).</p>
+<p>This first version will mostly focus on QAOA circuits and we will use some of the functions developed in the <a href="#id1"><span class="problematic" id="id2">`Recirq package.&lt;https://github.com/quantumlib/ReCirq&gt;`_</span></a></p>
+<p>Unfortunately, some of the functions of Recirq are not compatible with Cirq 13.0, which we use for this package.
+Furthermore, installing it using pip seems to break other packages required to run KnowYourLimits.
+In order to circumvent these issues, we have included a minimally modified version of the code directly in the repository.</p>
+<span class="target" id="module-circuit_compiler"></span><dl class="py function">
+<dt id="circuit_compiler.compiled_routed_qaoa">
+<code class="sig-prename descclassname"><span class="pre">circuit_compiler.</span></code><code class="sig-name descname"><span class="pre">compiled_routed_qaoa</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gammas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tk_device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#circuit_compiler.compiled_routed_qaoa" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a compiled and routed QAOA circuit given the target problem, the parameters of the QAOA circuit and a tket device which models the connectivity graph of the quantum device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>returns the (noiseless) routed circuit.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>routed_circuit (cirq circuit)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem_graph</strong> (<em>networkx graph</em>) – the (weighted) graph describing the target problem.</p></li>
+<li><p><strong>gammas</strong> (<em>vector of floats</em>) – the parameters of the unitary corresponding to the target Hamiltonian.</p></li>
+<li><p><strong>betas</strong> (<em>vector of floats</em>) – the parameters of the unitary corresponding to the mixer Hamiltonian.</p></li>
+<li><p><strong>tk_device</strong> (<em>tket device</em>) – the connectivity graph of the quantum device we wish to route the circuit to.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="circuit_compiler.rzz">
+<code class="sig-prename descclassname"><span class="pre">circuit_compiler.</span></code><code class="sig-name descname"><span class="pre">rzz</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rads</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#circuit_compiler.rzz" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a gate with the matrix exp(-i Z⊗Z rads).</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="partfunc.html" class="btn btn-neutral float-left" title="Partition function estimators" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="entnoise.html" class="btn btn-neutral float-right" title="Noise and entropic convergence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Daniel Stilck França.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

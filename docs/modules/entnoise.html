@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noise and entropic convergence &mdash; Know Your Limits  documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simple estimate generator" href="simple_est.html" />
+    <link rel="prev" title="Compilation and routing" href="comproute.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Know Your Limits
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Know Your Limits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-knowyourlimits">What is KnowYourLimits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-does-knowyourlimits-do">What does KnowYourLimits do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#how-does-knowyourlimits-obtain-the-lower-bound">How does KnowYourLimits obtain the lower bound?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#markov-chain-monte-carlo">Markov Chain Monte Carlo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#tensor-networks">Tensor Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#modeling-the-noise">Modeling the noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing KnowYourLimits</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main_modules.html">Main Modules</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#partition-function-estimators">Partition function estimators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="partfunc.html">Partition function estimators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#compile-and-route">Compile and route</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comproute.html">Compilation and routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../main_modules.html#noise-and-entropic-convergence">Noise and entropic convergence</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Noise and entropic convergence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantum-channels">Quantum channels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entropic-convergence-for-circuits">Entropic convergence for circuits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#entropic-convergence-for-annealers">Entropic convergence for annealers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#simple-estimates">Simple estimates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simple_est.html">Simple estimate generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aux_modules.html">Auxiliary modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../aux_modules.html#markov-chains">Markov chains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aux_modules/mcmc.html">Markov chain methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-benchmarking-qaoa">Example: Benchmarking QAOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-analysing-the-effect-of-limited-connectivity">Example: Analysing the effect of limited connectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-comparison-to-experiments">Example: Comparison to experiments</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Know Your Limits</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../main_modules.html">Main Modules</a> &raquo;</li>
+      <li>Noise and entropic convergence</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/entnoise.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="noise-and-entropic-convergence">
+<h1>Noise and entropic convergence<a class="headerlink" href="#noise-and-entropic-convergence" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="quantum-channels">
+<span id="my-reference-label"></span><h2>Quantum channels<a class="headerlink" href="#quantum-channels" title="Permalink to this headline">¶</a></h2>
+<p>One of the basic objects required to apply our technique is a quantum channel modelling the noise affecting the quantum device. We will depart from the assumption that the noise affecting the device is identical and independently distributed on each qubit and that we have one qubit noise.</p>
+<p>We will later expand our package to also allow for each qubit having a different quantum channel affecting it and also to allow for different noise rates for 1-qubit and 2-qubit gates.</p>
+<p>We will use <a class="reference external" href="https://quantumai.google/cirq/noise">Cirq quantum channels</a> to specify the noise models.</p>
+<p>We automatically compute the fixed point of the channel and the contraction coefficient of the relative entropy with respect to the fixed point. This is the main information on the channel we require to compute our lower bound.</p>
+<p>Recall that the technique only works if the quantum channel has a unique fixed point and it is not pure. You will obtain warnings if the quantum channel specified does not satisfy these conditions.</p>
+<div class="section" id="lindbladians">
+<h3>Lindbladians<a class="headerlink" href="#lindbladians" title="Permalink to this headline">¶</a></h3>
+<p>Quantum annealers being computational devices with continuous time, it is also more natural to model the noise affecting them in continuous time as well.
+That is, we will model the noise with a Lindbladian.</p>
+<p>Thus, KnowYourLimits also has functions to specify a noise model in continuous time.
+In the current implementation, it is assumed that the quantum annealer is implementing a time-dependent evolutions, but that the noise model itself is time-independent.
+Furthermore, we will assume that the Lindbladian affects each qubit independently and that the noise affecting all qubits is the same.
+For a more detailed discussion of this noise model, we refer to Sec. ID of the supplementary material of <a class="reference external" href="https://doi.org/10.1038/s41567-021-01356-3">“Limitations of optimization algorithms on noisy quantum devices”</a>.</p>
+<p>Unlike it was the case for discrete time quantum channels, Cirq does not readily allow the specification of a Lindbladian <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>.
+However, many Lindlbadians of physical interest are of the form <span class="math notranslate nohighlight">\(\mathcal{L}=r(T-\textrm{id})\)</span>, for some quantum channel <span class="math notranslate nohighlight">\(T\)</span> and a noise rate <span class="math notranslate nohighlight">\(r&gt;0\)</span>.
+Thus, the Lindbladian class will accept specifying both the Lindbladian in terms of a quantum channel and a rate or in terms of the process matrix of the Lindbladian.</p>
+<span class="target" id="module-noise_model"></span><dl class="py class">
+<dt id="noise_model.lindbladian">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">noise_model.</span></code><code class="sig-name descname"><span class="pre">lindbladian</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_noise</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cirq_input</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noise_model.lindbladian" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class for Lindbladians. The quantum channel is initialized either by a cirq noise model or a process matrix in the Heisenberg picture.
+We then compute the spectral gap and fixed point of the Lindbladian. It will srote the contraction rate towards the fixed point of the noise in self.contraction. The density matrix of the noise will be stored in self.fixed_point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_noise</strong> (<em>complex array</em><em> or </em><em>cirq noise model</em>) – specification of the Lindbladian. This can either be in the form of a process matrix or a cirq noise model. In the latter case, the Lindbladian is assumed to be of the form <span class="math notranslate nohighlight">\(\mathcal{L}=r(T-\textrm{id})\)</span>, where <span class="math notranslate nohighlight">\(T\)</span> is the noise model and <span class="math notranslate nohighlight">\(r\)</span> is the noise rate.</p></li>
+<li><p><strong>rate</strong> (<em>float</em>) – the rate <span class="math notranslate nohighlight">\(r\)</span> of the noise as specified above. Only required if we are given a cirq noise model.</p></li>
+<li><p><strong>cirq_input</strong> (<em>bool</em>) – set to 1 if the input model for the noise model is a cirq quantum channel. If it is set to 0, it is assumed that we are given the process matrix of the Lindbladian.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="noise_model.quantum_channel">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">noise_model.</span></code><code class="sig-name descname"><span class="pre">quantum_channel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cirq_model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noise_model.quantum_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class for quantum channels. The quantum channel is initialized by a cirq noise model. We then compute the spectral gap and fixed point of the noise model.</p>
+<dl class="py method">
+<dt id="noise_model.quantum_channel.apply_channel">
+<code class="sig-name descname"><span class="pre">apply_channel</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noise_model.quantum_channel.apply_channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the quantum channel to a matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the output of the channel given an input matrix.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>output (complex array)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>complex array</em>) – input of the channel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="noise_model.quantum_channel.overlap">
+<code class="sig-name descname"><span class="pre">overlap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#noise_model.quantum_channel.overlap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Denoting the underlying chanel by <span class="math notranslate nohighlight">\(T\)</span> and given matrices <span class="math notranslate nohighlight">\(A,B\)</span>, this function computes <span class="math notranslate nohighlight">\(\operatorname{tr}(A^{\dagger}T(B))\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>the output of the channel given an input matrix.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>output (complex array)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (<em>complex array</em>) – input of the channel.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="entropic-convergence-for-circuits">
+<h2>Entropic convergence for circuits<a class="headerlink" href="#entropic-convergence-for-circuits" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the function used to estimate the relative entropy between the output of a circuit and the fixed point of the noise affecting the circuit.</p>
+<p>This estimate is performed using the entropic convergence result stated in Lemma 3 of <a class="reference external" href="https://doi.org/10.1038/s41567-021-01356-3">“Limitations of optimization algorithms on noisy quantum devices”</a>. As discussed in more detailed in the aforementioned paper, this estimate is particularly efrfective for QAOA-like circuits or whenever the fixed point of the noise is close to maximally mixed.</p>
+<span class="target" id="module-circuit_analyser"></span><dl class="py function">
+<dt id="circuit_analyser.entropy_output">
+<code class="sig-prename descclassname"><span class="pre">circuit_analyser.</span></code><code class="sig-name descname"><span class="pre">entropy_output</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">circuit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contraction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#circuit_analyser.entropy_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the relative entropy between the output of a noisy circuit and the fixed point of the noise. The code assumes that the initial state of the circuit is <span class="math notranslate nohighlight">\(|0\rangle^{\otimes n}\)</span>. Note that all arguments related to the noise are automatically provided by the quantum channel class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>upper bound on the relative entropy between output of the circuit and fixed point of the noise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>final_ent (float)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>circuit</strong> (<em>Cirq circuit</em>) – cirq noiseless circuit whose output’s energy we wish to lower-bound.</p></li>
+<li><p><strong>number_qubits</strong> (<em>integer</em>) – the number of qubits of the circuit.</p></li>
+<li><p><strong>fixed_point</strong> (<em>2x2 complex array</em>) – density matrix corresponding to the fixed point of the noise.</p></li>
+<li><p><strong>contraction</strong> (<em>float</em>) – contraction of the noise towards the fixed point.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="entropic-convergence-for-annealers">
+<h2>Entropic convergence for annealers<a class="headerlink" href="#entropic-convergence-for-annealers" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the functions used to estimate the relative entropy between the output of a noisy quantum annealer and the fixed point of the noise.</p>
+<p>This estimate is performed using the entropic convergence result stated in Theorem 1 of <a class="reference external" href="https://doi.org/10.1038/s41567-021-01356-3">“Limitations of optimization algorithms on noisy quantum devices”</a>.</p>
+<p>Note that we assume that the underlying annealing path is of the form <span class="math notranslate nohighlight">\(f(t/T)H_0+g(t/T)H_I\)</span>, where <span class="math notranslate nohighlight">\(H_0=-\sum_i X_i\)</span>. This reflects the annealing paths that can be implmeented in contemporary platforms.</p>
+<span class="target" id="module-annealer_analyser"></span><dl class="py function">
+<dt id="annealer_analyser.entropy_output_annealer">
+<code class="sig-prename descclassname"><span class="pre">annealer_analyser.</span></code><code class="sig-name descname"><span class="pre">entropy_output_annealer</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">schedule</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">T</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_qubits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contraction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#annealer_analyser.entropy_output_annealer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates the relative entropy between the output of a noisy annealer and the fixed point of the noise. The code assumes that the initial state of the circuit is <span class="math notranslate nohighlight">\(|+\rangle^{\otimes n}\)</span> and that the annealing schedule is of the form <span class="math notranslate nohighlight">\(f(t/T)H_0+g(t/T)H_I\)</span>, where <span class="math notranslate nohighlight">\(f\)</span> is the annealing schedule and <span class="math notranslate nohighlight">\(H_0=-\sum_iX_i\)</span>. The function <span class="math notranslate nohighlight">\(g\)</span> does not contribute to the final entropy, so we ignore if for now. Note that the contraction is now the contraction rate, as we are in continuous time.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>upper bound on the relative entropy between output of the circuit and fixed point of the noise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>final_ent (float)</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>schedule</strong> (<em>callable function</em>) – function <span class="math notranslate nohighlight">\(f:[0,1]\to\mathbb{R}\)</span> that describes the annealing schedule.</p></li>
+<li><p><strong>T</strong> (<em>float</em>) – total annealing time.</p></li>
+<li><p><strong>number_qubits</strong> (<em>integer</em>) – the number of qubits of the annealer.</p></li>
+<li><p><strong>fixed_point</strong> (<em>2x2 complex array</em>) – density matrix corresponding to the fixed point of the noise. Note that is has to correspond to a classical state and we adopt the convention that the probability of observing 0 is larger than 1.</p></li>
+<li><p><strong>contraction</strong> (<em>float</em>) – contraction rate of the Linfbladian towards the fixed point. Note that we have</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="comproute.html" class="btn btn-neutral float-left" title="Compilation and routing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simple_est.html" class="btn btn-neutral float-right" title="Simple estimate generator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Daniel Stilck França.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

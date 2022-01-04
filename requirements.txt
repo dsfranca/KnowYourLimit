@@ -62,3 +62,4 @@ pytket
 pytket-cirq
 sklearn
 sphinx_rtd_theme
+itertools

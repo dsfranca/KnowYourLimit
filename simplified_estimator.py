@@ -4,7 +4,8 @@ from noise_model import *
 from circuit_compiler import *
 from circuit_analyser import *
 from partfunc_estimators import *
-
+from annealer_analyser import *
+import itertools as itertools
 
 def best_estimate_rel_ent(betas,log_partitions,rel_ent,n,temp_noise=0):
 
@@ -15,7 +16,6 @@ def best_estimate_rel_ent(betas,log_partitions,rel_ent,n,temp_noise=0):
     
         betas(vector of floats): list of inverse temperatures.
         log_partitions: the corresponding values for the log-partition function. Note that if the noise is biased, this should also be takne into account when computing the partition function.
-        device(pytket device): the connectivity of the underllying device.
         rel_ent(float): the relative entropy between the output of the noisy circuit and the fixed point of the noise. 
         n (int): number of qubits.
         temp_noise: the inverse temperature of the fixed point of the noise. In formulas, the fixed point of the noise is proportional to :math:`e^{-\\lambda Z}`, where :math:`\\lambda` corresponds to the temp_noise parameter. The standard setting gives the maximally mixed state.
@@ -200,8 +200,108 @@ def estimator_energy_QAOA_dep_square_SK(p,n,depth,verbose=1,method='TN'):
     
     
     return np.real(output_energy) #output_energy,ground_state_energy
+def part_brute_force(A,n,beta):
+    """
+    Computes the partition function brute force. Should not be attempted at moderate system sizes.
+
+    Args:
+        A(scipy sparse matrix): the (weighted) adjacency matrix of the Ising model whose partition function we wish to compute
+        n (int): system size.
+        beta (float): inverse temperature of the partition function.
+
+    Returns:
+        part (float): the partition function.
+    """
+    part=0
+    for k in itertools.product('01', repeat=n):
+        state=np.zeros(n)
+        for m in range(0,n):
+            state[m]=(-1)**int(k[m])
+        addition=A.dot(state)
+        addition=state.dot(addition)
+        part+=np.exp(-beta*addition)
+    return part
+
+def find_minimum_brute(A,n):
+    """
+    Computes the minimum energy of an Ising model brute force. Should not be attempted at moderate system sizes.
+
+    Args:
+        A(scipy sparse matrix): the (weighted) adjacency matrix of the Ising model whose partition function we wish to compute
+        n (int): system size.
+
+    Returns:
+        energy_min (float): the true minimum.
+    """
+    energy_min=0
+    for k in itertools.product('01', repeat=n):
+        state=np.zeros(n)
+        for m in range(0,n):
+            state[m]=(-1)**int(k[m])
+        addition=A.dot(state)
+        addition=state.dot(addition)
+        if addition<energy_min:
+            energy_min=addition
+    return energy_min
+
+def estimator_energy_QAOA_dep_device_SK(p,n,device,depth,verbose=1):
+    """
+    Returns a lower bound on the energy outputted by a QAOA circuit under depolarizing noise and a connectivity graph for the device for the SK model. Note that as the SK-model corresponds to the complete graph, even moderate values of n already take a considerable time to compute and in this function we compute the partition function brute force.
+
+    Args:
+    
+        p(float): local depolarizing probability.
+        n (int): the number of spins in the SK model.
+        device (pytket device): connectivity graph of the device
+        depth (int): the depth of QAOA circuit.
+        verbose(bool): if set to 1, it will also print the depth of the compiled circuit and at which stage of the process we are at. If 0 there will be no output.
 
 
+    Returns:
+        output_energy (float): a lower bound to the energy of the QAOA circuit.
+    """
+    problem_graph=sk_model(n)
+    A=nx.to_scipy_sparse_matrix(problem_graph)
+    
+    gammas=np.ones(depth)
+    betas=np.ones(depth)
+    noise=quantum_channel(cirq.depolarize(p))
+    sigma=noise.fixed_point
+    if verbose==1:
+        print("Compiling circuit")
+    circuit=compiled_routed_weighted_qaoa(problem_graph,gammas,betas,device)
+    
+    if verbose==1:
+        
+        print("Circuit compiled")
+        print("The circuit has depth",len(circuit.moments))
+    n_qubits=problem_graph.order()
+
+    
+    #determine external field
+    sigma=noise.fixed_point
+    y=sigma[0,0]-sigma[1,1]
+    #weird normalization. I have encountered some versions of numpy that use base 2.
+    beta_sigma=(0.5/np.log(np.exp(1)))*np.log((1+y)/(1-y))
+    gamma=np.real(0.25*beta_sigma)
+    if verbose==1:
+        print("Estimating relative entropy of output")
+    rel_ent=entropy_output(circuit,n_qubits,sigma,noise.contraction)
+    if verbose==1:
+        print("Estimating partition functions")
+    betas=np.linspace(0.01,5,100)
+    log_partitions=np.zeros(100)
+    for k in range(0,100):
+        log_partitions[k]=np.log(part_brute_force(A,n,betas[k]))
+    
+    output_energy=best_estimate_rel_ent(betas,log_partitions,rel_ent,n=n_qubits,temp_noise=gamma)
+    #ground_state_energy=ground_state_brute_force(A)
+    #print(output_energy,ground_state_energy,noise.contraction)
+    true_minimum=find_minimum_brute(A,n)
+
+    
+    
+    return [np.real(output_energy), np.real(output_energy)/true_minimum,true_minimum]#output_energy,ground_state_energy
     
 def estimator_energy_QAOA_dep_square_d_regular(p,n,d,depth,verbose=1,method='TN'):
     """
@@ -249,7 +349,7 @@ def estimator_energy_QAOA_dep_square_d_regular(p,n,d,depth,verbose=1,method='TN'
     rel_ent=entropy_output(circuit,n_qubits,sigma,noise.contraction)
     if verbose==1:
         print("Estimating partition functions")
-    [betas,log_partitions]=partition_function_estimator_Ising(beta0=0.01,beta1=5,A=A,b=gamma*np.ones(n),method='TN',step_size=0.05)
+    [betas,log_partitions]=partition_function_estimator_Ising(beta0=0.01,beta1=5,A=A,b=gamma*np.ones(n),method=method,step_size=0.05)
     output_energy=best_estimate_rel_ent(betas,log_partitions,rel_ent,n=n_qubits,temp_noise=gamma)
     #ground_state_energy=ground_state_brute_force(A)
     #print(output_energy,ground_state_energy,noise.contraction)
@@ -257,3 +357,27 @@ def estimator_energy_QAOA_dep_square_d_regular(p,n,d,depth,verbose=1,method='TN'
     
     
     return np.real(output_energy) #output_energy,ground_state_energy
+
+
+def estimator_energy_annealer_dep(r,A,T,method='TN'):
+    """
+    Returns a lower bound on the energy outputted by a quantum annealer under depolarizing noise for an Ising model.
+
+    Args:
+    
+        r(float): local depolarizing rate.
+        A(scipy sparse matrix): the (weighted) adjacency matrix of the Ising model whose energy we wish to minimize.
+        T (float): total annealing time.
+        method(str): either 'TN' or 'MC'. Determines which method will be used to compute the partition function. TN is tensor network, MC is Monte Carlo.
+
+    Returns:
+        output_energy (float): a lower bound to the energy of the annealer.
+    """
+    g=lambda x: (1-x)
+    n=A.shape[0]
+    rel_ent=entropy_output_annealer(g,T,n,np.eye(2)/2,2*r)
+    
+    [betas,log_partitions]=partition_function_estimator_Ising(beta0=0.01,beta1=5,A=A,b=0*np.ones(n),method=method,step_size=0.05)
+
+    output_energy=best_estimate_rel_ent(betas,log_partitions,rel_ent,n=n,temp_noise=0)
+    return output_energy

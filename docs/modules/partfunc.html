@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partition function estimators &mdash; Know Your Limits  documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Compilation and routing" href="comproute.html" />
+    <link rel="prev" title="Main Modules" href="../main_modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Know Your Limits
+          </a>
+              <div class="version">
+                0.0.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Know Your Limits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-is-knowyourlimits">What is KnowYourLimits?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#what-does-knowyourlimits-do">What does KnowYourLimits do?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro.html#how-does-knowyourlimits-obtain-the-lower-bound">How does KnowYourLimits obtain the lower bound?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#markov-chain-monte-carlo">Markov Chain Monte Carlo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#tensor-networks">Tensor Networks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../intro.html#modeling-the-noise">Modeling the noise</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installing KnowYourLimits</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../main_modules.html">Main Modules</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../main_modules.html#partition-function-estimators">Partition function estimators</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Partition function estimators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#compile-and-route">Compile and route</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="comproute.html">Compilation and routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#noise-and-entropic-convergence">Noise and entropic convergence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="entnoise.html">Noise and entropic convergence</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#quantum-channels">Quantum channels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#entropic-convergence-for-circuits">Entropic convergence for circuits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="entnoise.html#entropic-convergence-for-annealers">Entropic convergence for annealers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../main_modules.html#simple-estimates">Simple estimates</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simple_est.html">Simple estimate generator</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../aux_modules.html">Auxiliary modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../aux_modules.html#markov-chains">Markov chains</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../aux_modules/mcmc.html">Markov chain methods</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-benchmarking-qaoa">Example: Benchmarking QAOA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-analysing-the-effect-of-limited-connectivity">Example: Analysing the effect of limited connectivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html#example-comparison-to-experiments">Example: Comparison to experiments</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Know Your Limits</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../main_modules.html">Main Modules</a> &raquo;</li>
+      <li>Partition function estimators</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/modules/partfunc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="partition-function-estimators">
+<h1>Partition function estimators<a class="headerlink" href="#partition-function-estimators" title="Permalink to this headline">¶</a></h1>
+<p>The main methods to compute partition functions. To see the details of how the partition function is computed with tensor network methods, we refer to the <a class="reference external" href="https://quimb.readthedocs.io/en/latest/_autosummary/quimb.tensor.tensor_gen.html#quimb.tensor.tensor_gen.HTN_classical_partition_function_from_edges">quimb documentation</a>.
+But the important message is that they can compute the partition function relatively efficiently for system sizes up to 70 qubits as long as the underlying graph is sufficiently sparse.</p>
+<p>For the Markov chain method, a more detailed explanation may be found in the corresponding page in the auxilliary modules, see <a class="reference internal" href="../aux_modules/mcmc.html#markov-chain-methods"><span class="std std-ref">Markov chain methods</span></a>. Their main advantage is that they can compute partition functions for significantly larger system sizes, up to thousands of qubits.
+However, they generally obtain loser estimates and for smaller sizes the tensor networks are faster.</p>
+<span class="target" id="module-partfunc_estimators"></span><dl class="py class">
+<dt id="partfunc_estimators.external_field">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">partfunc_estimators.</span></code><code class="sig-name descname"><span class="pre">external_field</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partfunc_estimators.external_field" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class creates a callable for the external field that is required for the quimb tensor network contraction algorithm for Ising models.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="partfunc_estimators.partition_function_estimator_Ising">
+<code class="sig-prename descclassname"><span class="pre">partfunc_estimators.</span></code><code class="sig-name descname"><span class="pre">partition_function_estimator_Ising</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partfunc_estimators.partition_function_estimator_Ising" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the value of the log partition function of the Ising model defined by the matrix A and with external field b for all inverse
+temperatures in the interval [beta0,beta1]. The partition function is evaluated at every step-size.
+The method can either be Tensor networks or Monte Carlo. For Monte Carlo methods, the annealing schedule and the number of samples will be set automatically.
+Note that for Monte Carlo methods it could be the case that the estimate is not reliable for high values of beta1. Tensor network methods, on the other hand,
+cannot handle very large instances.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a list of inverse temperatures and the corresponding log partition functions.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>[betas,partitions] ([list of floats, list of floats])</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beta0</strong> (<em>float</em>) – initial inverse temperature.</p></li>
+<li><p><strong>beta1</strong> (<em>float</em>) – final inverse temperature.</p></li>
+<li><p><strong>A</strong> (<em>scipy sparse matrix</em>) – the (weighted) adjacency matrix of the Ising model whose energy we wish to minimize.</p></li>
+<li><p><strong>b</strong> (<em>vector</em>) – the external fields.</p></li>
+<li><p><strong>method</strong> (<em>str</em>) – either ‘TN’ or ‘MC’. Determines which method will be used to compute the partition function. TN is tensor network, MC is Monte Carlo.</p></li>
+<li><p><strong>step_size</strong> (<em>float</em>) – interval at which we evaluate the partition function.</p></li>
+<li><p><strong>samples</strong> (<em>int</em>) – only applies to the MC method. How many samples we take at each value of beta to estimate the partition function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="partfunc_estimators.weights_graph">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">partfunc_estimators.</span></code><code class="sig-name descname"><span class="pre">weights_graph</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">G</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#partfunc_estimators.weights_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class creates a callable for the weight of an edge from the adjacency matrix. This is required for the quimb tensor network contraction algorithm for Ising models.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../main_modules.html" class="btn btn-neutral float-left" title="Main Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="comproute.html" class="btn btn-neutral float-right" title="Compilation and routing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Daniel Stilck França.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

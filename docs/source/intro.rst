@@ -7,8 +7,11 @@ What is KnowYourLimits?
 ------------------------
 KnowYourLimits is a Python library to benchmark the performance of various quantum algorithms under noise. It is based on the methods developed in the paper
 `"Limitations of optimization algorithms on noisy quantum devices" <https://doi.org/10.1038/s41567-021-01356-3>`_.
+
 The intent of this package is to make the tools developed in that work easily accessible to the quantum computation community and people interested in estimating wether 
 near term quantum devices have the potential to provide better solutions for their applications.
+
+This projected was generously funded by the `Unitary fund <https://unitary.fund/>`_, to which I am very grateful.
 
 This first version of the project will focus on quantum algorithms that have as a goal to minimize the energy of an `Ising model <https://en.wikipedia.org/wiki/Ising_model>`_.
 This is justtified by several reasons:
@@ -56,19 +59,20 @@ The following flowchart explains the workings a bit better:
 How does KnowYourLimits obtain the lower bound?
 -----------------------------------------------
 
-To fully understand the answer to that question, one should of course consult the original paper the method is based on. But roughly speaking, the method hinges
-on computing certain entropic quantities related to the circui and the partition function of the Ising Hamiltonian. The mehod used for the first part (computing entropic quantities) is
+To fully understand the answer to that question, one should consult the original paper the method is based on. But roughly speaking, the method hinges
+on computing certain entropic quantities related to the circuit and the partition function of the Ising Hamiltonian. The method used for the first part (computing entropic quantities) is
 computationally inexpensive given the compiled and routed circuit. On the other hand, computing the partition function is computationally more expensive. 
 
 KnowYourLimits resorts to two algorithms to compute the partition functions: Markov Chain Monte Carlo and Tensor Networks. The user can then specify which method 
-they prefer to compute the partition function. We shortly discuss their advantages and disadvantages below and refer to XXX for the different routines implemented.
+they prefer to compute the partition function. We shortly discuss their advantages and disadvantages below and refer to the corresponding parts of the documentation for the different routines implemented.
 
 
 Markov Chain Monte Carlo
 *************************
 
 Markov Chain Monte Carlo methods have the advantage that they are highly scalable. They can be used to obtain estimates for devices comprised of hundreds or thousands
-of qubits within a resonable computational time. See Example XXX for a discussion of one case. However, they can only used efficiently and reliably to estimate partition functions
+of qubits within a reasonable computational time.
+However, they can only be used efficiently and reliably to estimate partition functions
 at relatively high temperatures. This means that the bounds obtained by KnowYourLlimits with this method are looser.
 
 Tensor Networks
@@ -78,17 +82,14 @@ Tensor network methods for computing partition functions have the advantage of r
 even at high temperatures. This means that they can be used to obtain tighter lower bounds on the energy of the circuit when compared to the Markov Chain methods.
 However, it quickly becomes too expensive to use these methods for more than a hundred qubits or so.
 
-as an input a noise model of an underlying device specified by a quantum channel. 
-It is possible to specify noise models for both 1-qubit gates and 2-qubit gates, as many current implementations have significantly different error rates for these
-two classes of gates. The quantum channels can be specified by their Kraus operators or a `Cirq noise model <https://quantumai.google/cirq/noise>`_, but we assume that
-the noise is independent of the gate being implemeneted.
+Modeling the noise
+********************
+KnowYourLimits departs from the assumption that the noise affecting is independent of the gate being implemented. Or, in the case of quantum annealers, that it is constant throughout the evolution.
 
+We explain these assumptions in much more detail in the :ref:`Quantum channels` section of the documentation. But it is important to note that KnowYourLimits has its own limitations.
 
-.. automodule:: main
-    :members:
+It requires the noisy channel to make the system converge to a unique state. This is the case for e.g. depolarizing noise, which drives the system to the maximally mixed state.
+But this is not the case for import noise models like dephasing. For those, any classical state is left invariant.
 
+On top of that, the system cannot converge to a pure state. This is the case for e.g. amplitude damping noise, which drives the system to :math:`|0\rangle`.
 
-..  image:: ./images/know_limits_vs_google.png
-    :align: center
-    :width: 500
-    :alt: Know your limits vs. Google
