@@ -8,13 +8,13 @@ What is KnowYourLimits?
 KnowYourLimits is a Python library to benchmark the performance of various quantum algorithms under noise. It is based on the methods developed in the paper
 `"Limitations of optimization algorithms on noisy quantum devices" <https://doi.org/10.1038/s41567-021-01356-3>`_.
 
-The intent of this package is to make the tools developed in that work easily accessible to the quantum computation community and people interested in estimating wether 
+The intent of this package is to make the tools developed in that work easily accessible to the quantum computation community and people interested in estimating whether 
 near term quantum devices have the potential to provide better solutions for their applications.
 
 This projected was generously funded by the `Unitary fund <https://unitary.fund/>`_, to which I am very grateful.
 
 This first version of the project will focus on quantum algorithms that have as a goal to minimize the energy of an `Ising model <https://en.wikipedia.org/wiki/Ising_model>`_.
-This is justtified by several reasons:
+This is justified by several reasons:
 
 * The polyvalence of the Ising model: it is well-known that many different problems in combinatorial optimization and physics can be formulated as minimizing the energy of an Ising model. See e.g. `this paper <https://www.frontiersin.org/articles/10.3389/fphy.2014.00005/full>`_ for examples.
 * Many proposals for the use of near-term devices have this as their goal to solve this problem. Some prominent examples that our package can handle are the Quantum Approximate Optimization Algorithm (see e.g. `this page <https://marwahaha.github.io/qaoa-reference/>`_ for references) and adiabatic quantum computing (see e.g. `this review <https://arxiv.org/pdf/1611.04471.pdf>`_).
@@ -25,9 +25,9 @@ The performance of near-term quantum devices on solving optimization problems is
 #. Their inherent noise and lack of error correction.
 #. Their limited connectivity. That is, it is not possible to apply gates between all possible qubits of the system.
 
-Point 1. cleary limits how many operations we can perform before the output of the noisy quantum device is dominate by the noise, whereas point 2. amplifies this effect.
+Point 1. cleary limits how many operations we can perform before the output of the noisy quantum device is dominated by the noise, whereas point 2. amplifies this effect.
 Indeed, as the limited connectivity then requires us to apply extra operations to ensure that we implement a given quantum circuit. Thus, KnowYourLimits needs to 
-take points 1. and 2 into acccount.
+take points 1. and 2 into account.
 
 
 What does KnowYourLimits do?
@@ -41,11 +41,11 @@ KnowYourLimits takes the following inputs:
 #. The circuit to be implemented or an annealing schedule.
 #. The Hamiltonian of the Ising state whose energy we wish to minimize.
 
-Given this input, it uses `pytket <https://github.com/CQCL/pytket>`_ to route the circuit the device's architecture. From that it then outputs a **lower bound to the 
+Given this input, it uses `pytket <https://github.com/CQCL/pytket>`_ to route the circuit to the device's architecture. From that it then outputs a **lower bound to the 
 energy of the output** of the noisy circuit. KnowYourLimits can then also compare this lower bound with the output of simple classical algorithms for the problem at hand.
 This way the user can infer whether there is room for better solutions by using that given noisy quantum device or classical methods will still outperform noisy quantum devices.
 
-For some noise models the exact circuit being implemented does not influence the lower bound, only its depth. This is the case for noise models that drive the 
+For some noise models, the exact circuit being implemented does not influence the lower bound, only its depth. This is the case for noise models that drive the 
 device to the maximally mixed state, like depolarizing noise.
 
 Importantly, the method used by KnowYourLimits does not require simulating the underlying quantum circuit. This way it can still give estimates for quantum devices 
